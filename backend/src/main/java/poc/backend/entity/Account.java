@@ -1,4 +1,4 @@
-package poc.backend.dto;
+package poc.backend.entity;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

@@ -1,12 +1,10 @@
 package poc.backend.dao;
 
-import poc.backend.dto.Account;
+import poc.backend.entity.Account;
 
 public class AccountDao {
 
-	public static class AlreadyExists extends Exception{
-		
-	}
+	public static class AlreadyExists extends Exception{}
 	
 	static private GenericDAO<Account> delegate = new GenericDAO<Account>("account", Account.class){
 		public void initialize() throws Exception{

@@ -11,8 +11,8 @@ import javax.ws.rs.core.MediaType;
 
 import poc.backend.dao.AccountDao;
 import poc.backend.dao.AccountDao.AlreadyExists;
-import poc.backend.dto.Account;
 import poc.backend.dto.Result;
+import poc.backend.entity.Account;
 
 @Path("account")
 public class NewAccount {
