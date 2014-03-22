@@ -32,7 +32,6 @@ public class NewAccount {
 			e.printStackTrace();
 			return new Result (Result.STATUS_KO, "alreadyExists");
 		}
-      
         return Result.KO;
     }
 	
