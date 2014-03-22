@@ -55,6 +55,10 @@ public class TextDao {
         return delegate.find(config, query, args);
 	}
 	
+	public static Text get(String id){
+		return delegate.findOne("{id:#}", id);
+	}
+	
 	
 	
 }
