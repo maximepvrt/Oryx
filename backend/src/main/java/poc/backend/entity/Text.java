@@ -23,7 +23,7 @@ public class Text {
 	public String summary;
 	public List<String> categories;
 	public String type;
-	public String humor;
+	public String mood;
 	public String content;
 	
 	public String accountId;

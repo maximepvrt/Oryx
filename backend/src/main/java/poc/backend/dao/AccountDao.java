@@ -24,4 +24,8 @@ public class AccountDao {
 	public static Account get(String login, String password){
 		return delegate.findOne("{login:#, password:#}", login, password);
 	}
+	
+	public static Account get(String id){
+		return delegate.get(id);
+	}
 }
