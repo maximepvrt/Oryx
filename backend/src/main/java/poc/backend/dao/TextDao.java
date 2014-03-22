@@ -1,6 +1,9 @@
 package poc.backend.dao;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import poc.backend.dao.GenericDAO.SortOrder;
 import poc.backend.dto.TextDto;
@@ -31,6 +34,25 @@ public class TextDao {
 		text.accountId = account;
 		text.timeToRead = textDto.timeToRead;
 		return delegate.saveOrUpdate(text);
+	}
+
+	public static List<Text> search(long timeToReadMin, long timeToReadMax, String type, String category, int offset, int count) {
+
+		GenericDAO.Configuration config = new GenericDAO.Configuration().setSkip(offset).setLimit(count).setSortQuery("{creationDate: -1}");
+        String query = "{timeToRead: { $gt: # }, timeToRead: { $lt: # }";
+        List<Object> arguments = new ArrayList<>();
+        arguments.add(timeToReadMin);
+        arguments.add(timeToReadMax);
+        
+        if (category != null) {
+        	query += ", {category: #}";
+            arguments.add(timeToReadMax);
+        }
+
+        Object[] args = new Object[arguments.size()];
+        arguments.toArray(args);
+        
+        return delegate.find(config, query, args);
 	}
 	
 }
