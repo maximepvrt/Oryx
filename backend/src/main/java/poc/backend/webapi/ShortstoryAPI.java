@@ -1,12 +1,17 @@
 package poc.backend.webapi;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -54,6 +59,18 @@ public class ShortstoryAPI {
 		if(b){
 			return Result.OK;
 		}
+		return Result.KO;
+	}
+	
+	@GET
+	@Path("find")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Result account (@QueryParam("timeToRead") String timeToRead, @QueryParam("type") String type, @DefaultValue("All") 
+    @QueryParam(value = "categorie") final List<String> categorieList) {
+//		Account account = AccountDao.get(login, password);
+//		if(account != null){
+//			return new Result (Result.STATUS_OK, account);
+//		}
 		return Result.KO;
 	}
 

@@ -2,6 +2,7 @@ package poc.backend.webapi;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -38,8 +39,8 @@ public class AccountAPI {
 		return Result.KO;
 	}
 
-	@GET
-	@Path("login")
+	@POST
+	@Path("find")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Result account (@QueryParam("login") String login, @QueryParam("password") String password) {
 		Account account = AccountDao.get(login, password);

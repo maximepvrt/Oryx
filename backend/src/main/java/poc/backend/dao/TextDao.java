@@ -24,7 +24,7 @@ public class TextDao {
 		}
 		text.title = textDto.title;
 		text.summary = textDto.summary;
-		text.categories = textDto.categories;
+		text.categorie = textDto.categorie;
 		text.type = textDto.type;
 		text.mood = textDto.mood;
 		text.content = text.content;

@@ -6,18 +6,18 @@ public class TextDto {
 
 	public String title;
 	public String summary;
-	public List<String> categories;
+	public String categorie;
 	public String type;
 	public String mood;
 	public String content;
 	public long timeToRead;
 	public TextDto(){}
-	public TextDto(String title, String summary, List<String> categories,
-			String type, String mood, String content, long timeToRead) {
+	public TextDto(String title, String summary, String categorie, String type,
+			String mood, String content, long timeToRead) {
 		super();
 		this.title = title;
 		this.summary = summary;
-		this.categories = categories;
+		this.categorie = categorie;
 		this.type = type;
 		this.mood = mood;
 		this.content = content;
