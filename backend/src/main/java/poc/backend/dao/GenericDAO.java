@@ -121,39 +121,9 @@ public class GenericDAO<T> {
 
     final public List<T> findAll(String query, Object... data) {
         return find(defaultConfiguration, query, data);
-//        MongoCollection coll = MongoHandler.get().getCollection(collectionName);
-//        // org.jongo.Find find = data!=null?coll.find(query,data):coll.find(query);
-//        org.jongo.Find find = mkFind(query, data);
-//        Iterable<T> all = find.limit(50).as(this.persistentClass);
-//        ArrayList<T> res = new ArrayList<T>();
-//        for (T a: all) {
-//            res.add(a);
-//        }
-//        return res;
     }
 
     final public List<T> find(GenericDAO.Configuration config, String query, Object... data) {
-//        MongoCollection coll = MongoHandler.get().getCollection(collectionName);
-//
-//        org.jongo.Find find = mkFind(query, data);
-//        if (config != null) {
-//            if (config.skip != null) {
-//                find.skip(config.skip);
-//            }
-//            if (config.limit != null) {
-//                find.limit(config.limit);
-//            }
-//            if (config.sortQuery != null) {
-//                if (config.sortQuery.trim().charAt(0) != '{') {
-//                    find.sort("{" + config.sortQuery + "}");
-//                } else {
-//                    find.sort(config.sortQuery);
-//                }
-//            }
-//        }
-//
-//        Iterable<T> all = find.as(this.persistentClass);
-
         final ArrayList<T> res = new ArrayList<T>();
         this.find(new Iterator<T>() {
             @Override
