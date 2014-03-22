@@ -31,8 +31,8 @@ public class MongoHandler {
 
     private MongoHandler() {
         try {
-            mongoClient = new MongoClient();
-            db = mongoClient.getDB("orthoscribe");
+            mongoClient = new MongoClient( "localhost" , 27017 );
+            db = mongoClient.getDB("mydb");
             jongo = new Jongo(db);
         } catch (Exception exc) {
             // Do something smart

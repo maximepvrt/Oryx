@@ -17,7 +17,7 @@ public class NewAccount {
 	@PUT
 	@Path("newaccount")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Result newAccount (Account  account) {
         System.out.println("Consumed json object is : " + account.login+" "+account.password);
         

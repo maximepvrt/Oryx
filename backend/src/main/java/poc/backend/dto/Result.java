@@ -1,12 +1,17 @@
 package poc.backend.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement 
 public class Result {
 	public static final String STATUS_KO = "KO";
 	public static final String STATUS_OK = "OK";
 	String status;
-	Object message;
+	String message;
 	
-	public Result(String status, Object message){
+	public Result(){};
+	
+	public Result(String status, String message){
 		this.status = status;
 		this.message = message;
 	}
