@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -62,15 +63,13 @@ public class ShortstoryAPI {
 		return Result.KO;
 	}
 	
-	@GET
+	@POST
 	@Path("find")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result account (@QueryParam("timeToRead") String timeToRead, @QueryParam("type") String type, @DefaultValue("All") 
-    @QueryParam(value = "categorie") final List<String> categorieList) {
-//		Account account = AccountDao.get(login, password);
-//		if(account != null){
-//			return new Result (Result.STATUS_OK, account);
-//		}
+	public Result account (@QueryParam("timeToRead") String timeToRead, @QueryParam("type") String type, @QueryParam(value = "categorie") String categorie) {
+		if(true){
+			return new Result (Result.STATUS_OK, null);
+		}
 		return Result.KO;
 	}
 
