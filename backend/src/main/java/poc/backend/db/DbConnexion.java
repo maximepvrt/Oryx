@@ -2,12 +2,14 @@ package poc.backend.db;
 
 import java.net.UnknownHostException;
 
+import org.jongo.Jongo;
+
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 public class DbConnexion {
-	
-	public DB connexion(){
+
+	public Jongo connexion(){
 		MongoClient mongoClient = null;
 		try {
 			mongoClient = new MongoClient( "localhost" , 27017 );
@@ -15,7 +17,7 @@ public class DbConnexion {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return mongoClient.getDB( "mydb" );
+		return new Jongo(mongoClient.getDB( "mydb" ));
 	}
-	
+
 }
