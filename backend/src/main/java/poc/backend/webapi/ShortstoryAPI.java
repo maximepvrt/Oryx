@@ -1,5 +1,6 @@
 package poc.backend.webapi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -23,6 +24,7 @@ import poc.backend.dto.RatingDto;
 import poc.backend.dto.Result;
 import poc.backend.dto.TextDto;
 import poc.backend.entity.Account;
+import poc.backend.entity.Text;
 
 @Path("shortstory")
 public class ShortstoryAPI {
@@ -66,7 +68,12 @@ public class ShortstoryAPI {
 	@POST
 	@Path("find")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result account (@QueryParam("timeToRead") String timeToRead, @QueryParam("type") String type, @QueryParam(value = "categorie") String categorie) {
+	public Result account (@QueryParam("timeToRead") Long timeToRead, @QueryParam("type") String type, @QueryParam(value = "category") String category) {
+		Long min = 0L;
+		if(timeToRead != null){min = timeToRead/2;}
+		Long max = 9999L;
+		if(timeToRead != null){max = timeToRead+timeToRead/2;}
+//		ArrayList<Text> textList = TextDao.search(min,max, type, category,0,5);
 		if(true){
 			return new Result (Result.STATUS_OK, null);
 		}

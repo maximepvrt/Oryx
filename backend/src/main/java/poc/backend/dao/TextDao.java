@@ -24,7 +24,7 @@ public class TextDao {
 		}
 		text.title = textDto.title;
 		text.summary = textDto.summary;
-		text.categorie = textDto.categorie;
+		text.category = textDto.category;
 		text.type = textDto.type;
 		text.mood = textDto.mood;
 		text.content = text.content;
@@ -32,5 +32,7 @@ public class TextDao {
 		text.timeToRead = textDto.timeToRead;
 		return delegate.saveOrUpdate(text);
 	}
+	
+	
 	
 }

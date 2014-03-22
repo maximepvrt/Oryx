@@ -21,7 +21,7 @@ public class Text {
 	
 	public String title;
 	public String summary;
-	public String categorie;
+	public String category;
 	public String type;
 	public String mood;
 	public String content;
