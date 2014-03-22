@@ -6,11 +6,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.jongo.Jongo;
-import org.jongo.MongoCollection;
-
-import poc.backend.db.DbConnexion;
+import poc.backend.dao.AccountDao;
+import poc.backend.dao.AccountDao.AlreadyExists;
 import poc.backend.dto.Account;
+import poc.backend.dto.Result;
 
 @Path("account")
 public class NewAccount {
@@ -19,14 +18,22 @@ public class NewAccount {
 	@Path("newaccount")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String newAccount (Account  message) {
-        System.out.println("Consumed json object is : " + message.getLogin()+" "+message.getPassword());
+	public Result newAccount (Account  account) {
+        System.out.println("Consumed json object is : " + account.login+" "+account.password);
         
         //TODO verification à faire
-        Jongo jongo = new DbConnexion().connexion();
-        MongoCollection accounts = jongo.getCollection("accounts");
-        accounts.save(message);
-        return "OK";
+        
+        try {
+			boolean b = AccountDao.create(account);
+			if(b){
+				return Result.OK;
+			}
+		} catch (AlreadyExists e) {
+			e.printStackTrace();
+			return new Result (Result.STATUS_KO, "alreadyExists");
+		}
+      
+        return Result.KO;
     }
 	
 	@PUT
@@ -34,7 +41,7 @@ public class NewAccount {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String account (Account  message) {
-        System.out.println("Consumed json object is : " + message.getLogin()+" "+message.getPassword());
+        System.out.println("Consumed json object is : " + message.login+" "+message.password);
         return "OK";
     }
 
