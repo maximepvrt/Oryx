@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import poc.backend.checker.Verify;
 import poc.backend.dao.AccountDao;
 import poc.backend.dao.AccountDao.AlreadyExists;
 import poc.backend.dto.Result;
@@ -23,10 +24,11 @@ public class AccountAPI {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Result newAccount (Account  account) {
-		System.out.println("Consumed json object is : " + account.login+" "+account.password);
 
-		//TODO verification à faire
-
+		account = Verify.verifyAccount(account);
+		if(account == null){
+			return new Result (Result.STATUS_KO, "badParameters");
+		}
 		try {
 			boolean b = AccountDao.create(account);
 			if(b){
