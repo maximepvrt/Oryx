@@ -15,7 +15,7 @@ import poc.backend.dto.Result;
 import poc.backend.entity.Account;
 
 @Path("account")
-public class NewAccount {
+public class AccountAPI {
 
 	@PUT
 	@Path("newaccount")

@@ -11,7 +11,7 @@ import poc.backend.dto.RatingDto;
 import poc.backend.dto.Result;
 
 @Path("shortstory")
-public class Shortstory {
+public class ShortstoryAPI {
 
 	@PUT
 	@Path("rating")
