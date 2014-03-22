@@ -6,12 +6,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Result {
 	public static final String STATUS_KO = "KO";
 	public static final String STATUS_OK = "OK";
-	String status;
-	String message;
-	
-	public Result(){};
-	
-	public Result(String status, String message){
+	public String status;
+	public Object message;
+	public Result(){}
+	public Result(String status, Object message){
 		this.status = status;
 		this.message = message;
 	}

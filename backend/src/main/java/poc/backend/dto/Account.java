@@ -16,4 +16,15 @@ public class Account {
 	public String password;
 	public String birthyear;
 	public char gender;
+	public Account(){}
+	public Account(String login, String password, String birthyear,
+			char gender) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.birthyear = birthyear;
+		this.gender = gender;
+	}
+	
+	
 }
