@@ -39,7 +39,7 @@ public class AccountAPI {
 		return Result.KO;
 	}
 
-	@POST
+	@GET
 	@Path("find")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Result account (@QueryParam("login") String login, @QueryParam("password") String password) {
