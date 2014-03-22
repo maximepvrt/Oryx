@@ -6,19 +6,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import poc.backend.dto.Rating;
+import poc.backend.dao.RatingDao;
+import poc.backend.dto.RatingDto;
 import poc.backend.dto.Result;
 
 @Path("shortstory")
 public class Shortstory {
-//	
-//	@PUT
-//	@Path("rating")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Result newAccount (Rating  rating) {
-//
-//		
-//	}
+
+	@PUT
+	@Path("rating")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Result rating (RatingDto  ratingDto) {
+		boolean b = RatingDao.create(ratingDto);
+		if(b){
+			return Result.OK;
+		}
+		return Result.KO;
+	}
 
 }

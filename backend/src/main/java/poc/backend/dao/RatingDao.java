@@ -1,9 +1,10 @@
 package poc.backend.dao;
 
-import poc.backend.dto.Rating;
+import poc.backend.dto.RatingDto;
+import poc.backend.entity.Rating;
+
 
 public class RatingDao {
-	public static class NotExists extends Exception{}
 	
 	static private GenericDAO<Rating> delegate = new GenericDAO<Rating>("rating", Rating.class){
 		public void initialize() throws Exception{
@@ -11,12 +12,14 @@ public class RatingDao {
 		}
 	};
 	
-	public static boolean create(Rating rating) throws NotExists{
-		Rating exist = delegate.findOne("{id:#}", rating.id);
+	public static boolean create(RatingDto rating){
+		Rating exist = delegate.findOne("{idBook:#}", rating.idBook);
 		if(exist == null){
-			throw new NotExists();
+			exist = new Rating(rating.idBook, 0, 0, 0);
 		}
-	
-		return delegate.saveOrUpdate(rating);
+		exist.nbVote+=1;
+		exist.SumRating += rating.rating;
+		exist.average = exist.SumRating / exist.nbVote;
+		return delegate.saveOrUpdate(exist);
 	}
 }
