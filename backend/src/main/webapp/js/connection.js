@@ -55,7 +55,7 @@ window.Readily = window.Readily || {};
 		};
 		
 		this.findlist = function(timetoRead, categ, callback) {
-			var data = {timetoRead:timetoRead, category:categ};
+			var data = {timeToRead:timetoRead, category:categ};
 			httpCall("POST", "/shortstory/findlist", JSON.stringify(data), callback);
 		};
 	}
