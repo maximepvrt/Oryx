@@ -1,6 +1,15 @@
 (function(Readily){
 
-	Readily.Navigation.mkRoute("shortstory_new", "#shortstory_new", "shortstory_new_tmpl.html", function(domId, template) {
+	Readily.Navigation.mkRoute("/shortstory_new", "#shortstory_new", "shortstory_new_tmpl.html", function(domId, template) {
+		
+		var id = $.cookie("id");
+		if (id == undefined) {
+			console.log("no id");
+			Readily.Navigation.postLogin = "/shortstory_new";
+			Readily.Navigation.go("#login");
+			return;
+		}
+		
 		$(domId).html(template());
 		
 		$(domId).find("form").submit(function(event) {
@@ -27,9 +36,10 @@
 //				$(domId).find(".error-alert").html("Le mot de passe n'est pas correctement retapé.");
 //				return false;								
 //			}
-			
+						
 			Readily.Connection.publish(title, categ, "", summary, content, function(res) {
 				console.log("publish res", res);
+				Readily.Navigation.go("/home");
 			})
 			
 			return false;
