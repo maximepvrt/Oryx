@@ -7,6 +7,7 @@
 <link rel="stylesheet" media="screen, print" href="css/style.css">
 <link rel="stylesheet" href="vendor/summernote/summernote.css">
 <link rel="stylesheet" href="vendor/font-awesome-4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="vendor/cubiq-add-to-homescreen-03ddee2/add2home.css">
 
 
 <script src="vendor/jquery-2.1.0.min.js" type="text/javascript"></script>
@@ -17,12 +18,17 @@
 <script src="vendor/handlebars-v1.3.0.js" type="text/javascript"></script>
 
   <script type="text/javascript" src="vendor/summernote/summernote.js"></script>
+  <script type="application/javascript" src="vendor/cubiq-add-to-homescreen-03ddee2/add2home.js"></script>
   
 
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Insert title here</title>
+	<meta name="apple-mobile-web-app-title" content="Readily">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" href="img/icon.png">
+<title>Readily</title>
 </head>
 <body>
 	
@@ -35,20 +41,20 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#home"><img src="img/logo.png"></a>
+				<a class="navbar-brand" href=""><img src="img/logo.png"></a>
 </div>
 				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav hidden-xs">
 						<li><a href="">Accueil</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contact">Contact</a></li>
+						<li><a href="http://blog.readyly.co/blog">Blog</a></li>
 					</ul>
-					<ul class="nav navbar-nav pull-right">
+					<ul class="nav navbar-nav pull-right hidden-xs">
 						<li><a href="#login">Se connecter</a></li>
 						<li><a href="#signup">S'inscrire</a></li>
 					</ul>
 					<!--/.navbar-collapse -->
 				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -57,14 +63,12 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="#">Start Bootstrap</a></li>
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Shortcuts</a></li>
-				<li><a href="#">Overview</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li class="sidebar-brand"><a href="">Gestion du compte</a></li>
+				<li><a class="visible-xs" href="#login">Se connecter</a></li>
+				<li><a class="visible-xs" href="#signup">S'inscrire</a></li>
+				<li><a href="#moncompte">Mon compte</a></li>
+				<li><a class="hidden-xs" href="#shortstory_new">Ecrire une nouvelle</a></li>
+				<li><a href="#legal">Mention légal</a></li>
 			</ul>
 		</div>
 	

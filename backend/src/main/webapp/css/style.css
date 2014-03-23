@@ -67,3 +67,7 @@ border-bottom:3px solid #27abe0;
 .navbar-default .navbar-nav>li>a:hover {
 	color: #ffffff;
 }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+ border-color: #2e3e4f;
+}
