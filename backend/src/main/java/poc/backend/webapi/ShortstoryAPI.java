@@ -33,13 +33,11 @@ public class ShortstoryAPI {
 	@Path("rating")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result rating (@CookieParam("id") String id, RatingDto  ratingDto, @Context HttpServletResponse response) {
+	public Result rating (@CookieParam("id") String id, RatingDto  ratingDto) {
 		Account account = AccountDao.get(id);
 		if(account == null){
 			return Result.KO;
 		}
-		response.addCookie(new Cookie("id", account.id));
-		response.addCookie(new Cookie("login", account.login));
 		boolean b = RatingDao.create(ratingDto);
 		if(b){
 			return Result.OK;
@@ -51,17 +49,11 @@ public class ShortstoryAPI {
 	@Path("putstory")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result putstory (@CookieParam("id") String id, TextDto  textDto, @Context HttpServletResponse response) {
+	public Result putstory (@CookieParam("id") String id, TextDto  textDto) {
 		Account account = AccountDao.get(id);
 		if(account == null){
 			return new Result (Result.STATUS_OK, "accountNull");
 		}
-		Cookie cookie1 = new Cookie("id", account.id);
-		cookie1.setMaxAge(30000000);
-		response.addCookie(cookie1);
-		Cookie cookie2 = new Cookie("login", account.login);
-		cookie1.setMaxAge(30000000);
-		response.addCookie(cookie2);
 		boolean b = TextDao.saveOrUpdate(textDto, account.id);
 		if(b){
 			return Result.OK;

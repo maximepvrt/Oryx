@@ -46,6 +46,10 @@ window.Readily = window.Readily || {};
 			httpCall("PUT", "/shortstory/putstory", JSON.stringify(data), callback);
 		};
 		
+		this.findtext = function(id, callback) {
+			httpCall("GET", "/shortstory/findtext", {id:id}, callback);
+		};
+		
 	}
 
 	Readily.Connection = new Connection();

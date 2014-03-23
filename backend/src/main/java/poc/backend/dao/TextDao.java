@@ -1,17 +1,15 @@
 package poc.backend.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import poc.backend.dao.GenericDAO.SortOrder;
 import poc.backend.dto.TextDto;
 import poc.backend.entity.Text;
 
 public class TextDao {
 
-	static private GenericDAO<Text> delegate = new GenericDAO<Text>("account", Text.class){
+	static private GenericDAO<Text> delegate = new GenericDAO<Text>("text", Text.class){
 
 		public void initialize() throws Exception{
 			ensureIndex("accountId", SortOrder.ASCENDING);
@@ -19,12 +17,12 @@ public class TextDao {
 	};
 	
 	public static boolean saveOrUpdate(TextDto textDto, String account) {
-		Text text = null;
-		if (text.id == null) {
-			text.creationDate = new Date();
-		} else {
-			text.modificationDate = new Date();
-		}
+		Text text = new Text();
+//		if (text.id == null) {
+//			text.creationDate = new Date();
+//		} else {
+		text.modificationDate = new Date();
+//		}
 		text.title = textDto.title;
 		text.summary = textDto.summary;
 		text.category = textDto.category;
@@ -56,7 +54,7 @@ public class TextDao {
 	}
 	
 	public static Text get(String id){
-		return delegate.findOne("{id:#}", id);
+		return delegate.get(id);
 	}
 	
 	
