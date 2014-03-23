@@ -1,5 +1,7 @@
 package poc.backend.webapi;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -8,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import poc.backend.checker.Verify;
@@ -44,9 +47,15 @@ public class AccountAPI {
 	@GET
 	@Path("find")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result account (@QueryParam("login") String login, @QueryParam("password") String password) {
+	public Result account (@QueryParam("login") String login, @QueryParam("password") String password, @Context HttpServletResponse response) {
 		Account account = AccountDao.get(login, password);
 		if(account != null){
+			Cookie cookie1 = new Cookie("id", account.id);
+			cookie1.setMaxAge(30000000);
+			response.addCookie(cookie1);
+			Cookie cookie2 = new Cookie("login", account.login);
+			cookie1.setMaxAge(30000000);
+			response.addCookie(cookie2);
 			return new Result (Result.STATUS_OK, account);
 		}
 		return Result.KO;
