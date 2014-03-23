@@ -2,7 +2,7 @@ window.Readily = window.Readily || {};
 
 (function(Readily){
 	
-	var base = "/backend/webapi";
+	var base = "/webapi";
 	
 	function Callback(status, data) {
 		this.status = status;
