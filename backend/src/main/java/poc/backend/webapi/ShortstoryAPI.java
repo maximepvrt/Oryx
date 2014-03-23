@@ -74,10 +74,16 @@ public class ShortstoryAPI {
 		if(timeToRead != null){min = timeToRead/2;}
 		long max = 9999L;
 		if(timeToRead != null){max = timeToRead+timeToRead/2;}
-		List<Text> textList = TextDao.search(min,max, type, category,0,5);
+		System.out.println("category:"+category);
+		System.out.println("type:"+type);
+		List<Text> textList = TextDao.search(0,20, type, category,0,5);
+		System.out.println("mouhahaha:"+textList);
 		if(textList != null){
+			System.out.println("gfdfgdsfgd"+textList.isEmpty());
+			System.out.println("test");
 			List<SmallText> smallTextList = new ArrayList<SmallText>();
 			for(Text text : textList){
+				System.out.println(text.category+" "+text.id);
 				smallTextList.add(new SmallText(text.id, text.title, text.summary, text.category, text.type, text.timeToRead));
 			}
 			return new Result (Result.STATUS_OK, smallTextList);
