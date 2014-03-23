@@ -57,7 +57,8 @@ public class ShortstoryAPI {
 		}
 		textDto = Verify.verifyPutStory(textDto);
 		if(textDto != null){
-			boolean b = TextDao.saveOrUpdate(textDto, account.id);
+			System.out.println(account.login);
+			boolean b = TextDao.saveOrUpdate(textDto, account.login);
 			if(b){
 				return Result.OK;
 			}
@@ -68,6 +69,7 @@ public class ShortstoryAPI {
 	
 	@POST
 	@Path("findlist")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Result findlist (@QueryParam("timetoRead") String timeToReadString,  @QueryParam("type") String type, @QueryParam(value = "category") String category) {
 		Integer timeToRead = null;
