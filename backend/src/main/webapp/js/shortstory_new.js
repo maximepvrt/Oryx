@@ -8,8 +8,10 @@
 			
 			var title = $(domId).find("input[name$='titre']").val();
 			var categ = $(domId).find("input[name$='categorie']").val();
-			var summary = $(domId).find("input[name$='summary']").val();
-			var content = $(domId).find("select[name$='content']").val();
+//			var summary = $(domId).find("input[name$='summary']").val();
+//			var content = $(domId).find("select[name$='content']").val();
+			var summary = $('textarea#summary').val();
+			var content = $('textarea#content').val();
 			
 //			if (titre == "") {
 //				$(domId).find(".error-alert").html("Vous devez avoir un nom d'utilisateur");

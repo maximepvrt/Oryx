@@ -1,5 +1,6 @@
 package poc.backend.checker;
 
+import poc.backend.dto.TextDto;
 import poc.backend.entity.Account;
 
 public class Verify {
@@ -18,5 +19,20 @@ public class Verify {
 			return null;
 		}
 		return account;
+	}
+	public static TextDto verifyPutStory(TextDto textDto){
+		if(textDto.content != null){
+			textDto.content = textDto.content.trim();
+		} else {return null;}
+		if(textDto.category != null){
+			textDto.category = textDto.category.trim();
+		} else {return null;}
+		if(textDto.summary != null){
+			textDto.summary = textDto.summary.trim();
+		} else {return null;}
+		if(textDto.title != null){
+			textDto.title = textDto.title.trim();
+		} else {return null;}
+		return textDto;
 	}
 }

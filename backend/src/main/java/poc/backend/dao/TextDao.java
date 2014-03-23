@@ -28,9 +28,10 @@ public class TextDao {
 		text.category = textDto.category;
 		text.type = textDto.type;
 		text.mood = textDto.mood;
-		text.content = text.content;
+		text.content = textDto.content;
 		text.accountId = account;
-		text.timeToRead = 0L;
+		text.timeToRead = ((textDto.content.split(" ").length) / 300);
+		System.out.println(text.timeToRead);
 		return delegate.saveOrUpdate(text);
 	}
 

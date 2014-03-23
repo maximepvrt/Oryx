@@ -16,6 +16,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import poc.backend.checker.Verify;
 import poc.backend.dao.AccountDao;
 import poc.backend.dao.RatingDao;
 import poc.backend.dao.TextDao;
@@ -54,6 +55,7 @@ public class ShortstoryAPI {
 		if(account == null){
 			return new Result (Result.STATUS_OK, "accountNull");
 		}
+		textDto = Verify.verifyPutStory(textDto);
 		boolean b = TextDao.saveOrUpdate(textDto, account.id);
 		if(b){
 			return Result.OK;
