@@ -24,7 +24,6 @@ public class Verify {
 		if(textDto.content != null){
 			textDto.content = textDto.content.trim();
 		} else {return null;}
-		System.out.println("!!!!!!!!!!!!!"+textDto.category);
 		if(textDto.category != null){
 			textDto.category = textDto.category.trim();
 		} else {return null;}
