@@ -26,7 +26,7 @@ public class AccountAPI {
 	@Path("newaccount")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result newAccount (Account  account) {
+	public Result newAccount (Account  account, @Context HttpServletResponse response) {
 
 		account = Verify.verifyAccount(account);
 		if(account == null){
@@ -35,6 +35,14 @@ public class AccountAPI {
 		try {
 			boolean b = AccountDao.create(account);
 			if(b){
+				Cookie cookie1 = new Cookie("id", account.id);
+				cookie1.setMaxAge(30000000);
+				cookie1.setPath("/");
+				response.addCookie(cookie1);
+				Cookie cookie2 = new Cookie("login", account.login);
+				cookie2.setMaxAge(30000000);
+				cookie2.setPath("/");
+				response.addCookie(cookie2);
 				return Result.OK;
 			}
 		} catch (AlreadyExists e) {

@@ -69,16 +69,21 @@ public class ShortstoryAPI {
 	@POST
 	@Path("findlist")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result account (@QueryParam("timeToRead") Long timeToRead, @QueryParam("type") String type, @QueryParam(value = "category") String category) {
-		long min = 0L;
+	public Result account (@QueryParam("timetoRead") String timeToReadString,  @QueryParam("type") String type, @QueryParam(value = "category") String category) {
+		Integer timeToRead = null;
+		if(timeToReadString != null){
+			timeToRead = Integer.parseInt(timeToReadString);
+		}
+		Integer min = 0;
 		if(timeToRead != null){min = timeToRead/2;}
-		long max = 9999L;
+		Integer max = 9999;
 		if(timeToRead != null){max = timeToRead+timeToRead/2;}
+		System.out.println("timeToRead:"+timeToRead);
 		System.out.println("category:"+category);
 		System.out.println("type:"+type);
-		List<Text> textList = TextDao.search(0,20, type, category,0,5);
+		List<Text> textList = TextDao.search(min,max, type, category,0,5);
 		System.out.println("mouhahaha:"+textList);
-		if(textList != null){
+		if(textList != null && !textList.isEmpty()){
 			System.out.println("gfdfgdsfgd"+textList.isEmpty());
 			System.out.println("test");
 			List<SmallText> smallTextList = new ArrayList<SmallText>();

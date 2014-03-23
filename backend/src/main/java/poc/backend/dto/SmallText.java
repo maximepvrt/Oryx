@@ -7,10 +7,10 @@ public class SmallText {
 	public String summary;
 	public String category;
 	public String type;
-	public String timeToRead;
+	public Integer timeToRead;
 	public SmallText(){}
 	public SmallText(String id, String title, String summary, String category,
-			String type, String timeToRead) {
+			String type, Integer timeToRead) {
 		super();
 		this.id = id;
 		this.title = title;
