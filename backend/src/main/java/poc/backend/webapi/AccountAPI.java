@@ -52,9 +52,11 @@ public class AccountAPI {
 		if(account != null){
 			Cookie cookie1 = new Cookie("id", account.id);
 			cookie1.setMaxAge(30000000);
+			cookie1.setPath("/");
 			response.addCookie(cookie1);
 			Cookie cookie2 = new Cookie("login", account.login);
-			cookie1.setMaxAge(30000000);
+			cookie2.setMaxAge(30000000);
+			cookie2.setPath("/");
 			response.addCookie(cookie2);
 			return new Result (Result.STATUS_OK, account);
 		}
