@@ -54,7 +54,7 @@ public class ShortstoryAPI {
 	public Result putstory (@CookieParam("id") String id, TextDto  textDto, @Context HttpServletResponse response) {
 		Account account = AccountDao.get(id);
 		if(account == null){
-			return Result.KO;
+			return new Result (Result.STATUS_OK, "accountNull");
 		}
 		response.addCookie(new Cookie("id", account.id));
 		response.addCookie(new Cookie("login", account.login));
