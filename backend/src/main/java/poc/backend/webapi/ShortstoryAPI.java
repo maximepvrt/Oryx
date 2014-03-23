@@ -65,23 +65,31 @@ public class ShortstoryAPI {
 		}
 		return new Result (Result.STATUS_KO, "badParameters");
 	}
+
+	
+	static public class FindDTO {
+		public String timeToRead;
+		public String type;
+		public String category;
+	}
 	
 	@POST
 	@Path("findlist")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result findlist (@QueryParam("timetoRead") String timeToReadString,  @QueryParam("type") String type, @QueryParam(value = "category") String category) {
+	public Result findlist (FindDTO query) {
+		
 		Integer timeToRead = null;
-		if(timeToReadString != null){
-			timeToRead = Integer.parseInt(timeToReadString);
+		if(query.timeToRead != null){
+			timeToRead = Integer.parseInt(query.timeToRead);
 		}
 		Integer min = 0;
 		if(timeToRead != null){min = timeToRead/2;}
 		Integer max = 9999;
 		if(timeToRead != null){max = timeToRead+timeToRead/2;}
 		System.out.println("timeToRead:"+timeToRead);
-		System.out.println("category:"+category);
-		System.out.println("type:"+type);
-		List<Text> textList = TextDao.search(min,max, type, category,0,5);
+		System.out.println("category:"+query.category);
+		System.out.println("type:"+query.type);
+		List<Text> textList = TextDao.search(min,max, query.type, query.category,0,5);
 		System.out.println("mouhahaha:"+textList);
 		if(textList != null && !textList.isEmpty()){
 			List<SmallText> smallTextList = new ArrayList<SmallText>();
