@@ -39,6 +39,7 @@
 						
 			Readily.Connection.publish(title, categ, "", summary, content, function(res) {
 				console.log("publish res", res);
+				Readily.Navigation.go("/home");
 			})
 			
 			return false;
