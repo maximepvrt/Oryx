@@ -5,7 +5,7 @@
 		
 		$(domId).find("form").submit(function(event) {
 			var timetoread = $(domId).find("select[name$='timetoread']").val();
-			var categ = $(domId).find("select[name$='categorie']").val();
+			var categ = $(domId).find("select[name$='category']").val();
 			Readily.Connection.findlist(timetoread, categ, function(res) {
 				console.log("publish res", res);
 				
