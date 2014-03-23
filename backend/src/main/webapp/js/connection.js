@@ -3,7 +3,9 @@ window.Readily = window.Readily || {};
 (function(Readily){
 	
 	var base = "/webapi";
-	
+	if (document.location.hostname == "localhost") {
+		base = "/backend/webapi"
+	}
 	
 	function Callback(status, data) {
 		this.status = status;
