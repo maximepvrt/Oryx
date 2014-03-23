@@ -75,7 +75,7 @@ public class ShortstoryAPI {
 		if(textList != null){
 			List<SmallText> smallTextList = new ArrayList<SmallText>();
 			for(Text text : textList){
-				smallTextList.add(new SmallText(text.title, text.summary, text.category, text.type));
+				smallTextList.add(new SmallText(text.id, text.title, text.summary, text.category, text.type));
 			}
 			return new Result (Result.STATUS_OK, smallTextList);
 		}
