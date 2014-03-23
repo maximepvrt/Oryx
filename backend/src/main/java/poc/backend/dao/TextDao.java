@@ -30,7 +30,7 @@ public class TextDao {
 		text.mood = textDto.mood;
 		text.content = textDto.content;
 		text.accountId = account;
-		text.timeToRead = ((textDto.content.split(" ").length) / 300);
+		text.timeToRead = ""+((textDto.content.split(" ").length) / 300);
 		System.out.println(text.timeToRead);
 		return delegate.saveOrUpdate(text);
 	}

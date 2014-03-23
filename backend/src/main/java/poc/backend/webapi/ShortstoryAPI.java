@@ -53,7 +53,7 @@ public class ShortstoryAPI {
 	public Result putstory (@CookieParam("id") String id, TextDto  textDto) {
 		Account account = AccountDao.get(id);
 		if(account == null){
-			return new Result (Result.STATUS_OK, "accountNull");
+			return new Result (Result.STATUS_KO, "accountNull");
 		}
 		textDto = Verify.verifyPutStory(textDto);
 		boolean b = TextDao.saveOrUpdate(textDto, account.id);
@@ -75,7 +75,7 @@ public class ShortstoryAPI {
 		if(textList != null){
 			List<SmallText> smallTextList = new ArrayList<SmallText>();
 			for(Text text : textList){
-				smallTextList.add(new SmallText(text.id, text.title, text.summary, text.category, text.type));
+				smallTextList.add(new SmallText(text.id, text.title, text.summary, text.category, text.type, text.timeToRead));
 			}
 			return new Result (Result.STATUS_OK, smallTextList);
 		}

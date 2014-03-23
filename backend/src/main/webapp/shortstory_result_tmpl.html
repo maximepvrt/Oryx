@@ -1,7 +1,10 @@
-
-
-<a href="#shortstory_single" idBook="532e3745651f4a73edfba163" >Livre n°1</a>
-
-{{#each list}}
-	<div><a href="#shortstory_single/{{id}}">{{title}}</a></div>
+ {{#each list}}
+<div class="jumbotron">
+	<div>
+		<a href="#shortstory_single/{{id}}">{{title}}</a>
+	</div>
+	<p>{{summary}}
+	<p>temps de lecture estimé: {{timeToRead}} minutes</p>
+	</p>
+</div>
 {{/each}}
