@@ -41,8 +41,9 @@ window.Readily = window.Readily || {};
 			httpCall("PUT", "/account/newaccount", JSON.stringify(data) ,callback);
 		};
 		
-		this.newaccount = function(login, password, birthyear, gender, callback) {
-			httpCall("POST", "shortstory/find?lenght={length}&type={type}&number={nb}", "", callback);
+		this.publish = function(title, categ, type, summary, content, callback) {
+			var data = {title:title, category:categ, type:type, summary:summary, content:content};
+			httpCall("PUT", "/shortstory/putstory", JSON.stringify(data), callback);
 		};
 		
 	}
