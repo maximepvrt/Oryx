@@ -1,6 +1,5 @@
 package poc.backend.dto;
 
-import java.util.List;
 
 public class TextDto {
 
@@ -10,10 +9,9 @@ public class TextDto {
 	public String type;
 	public String mood;
 	public String content;
-	public long timeToRead;
 	public TextDto(){}
 	public TextDto(String title, String summary, String category, String type,
-			String mood, String content, long timeToRead) {
+			String mood, String content) {
 		super();
 		this.title = title;
 		this.summary = summary;
@@ -21,7 +19,6 @@ public class TextDto {
 		this.type = type;
 		this.mood = mood;
 		this.content = content;
-		this.timeToRead = timeToRead;
 	}
 	
 	

@@ -50,6 +50,10 @@ window.Readily = window.Readily || {};
 			httpCall("GET", "/shortstory/findtext", {id:id}, callback);
 		};
 		
+		this.findlist = function(id, callback) {
+			var data = {timetoRead:timetoRead, category:categ};
+			httpCall("POST", "/shortstory/findlist", JSON.stringify(data), callback);
+		};
 	}
 
 	Readily.Connection = new Connection();
