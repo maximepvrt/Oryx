@@ -7,7 +7,7 @@
 			var error = "";
 			
 			var title = $(domId).find("input[name$='titre']").val();
-			var categ = $(domId).find("input[name$='categorie']").val();
+			var categ = $(domId).find("select[name$='category']").val();
 //			var summary = $(domId).find("input[name$='summary']").val();
 //			var content = $(domId).find("select[name$='content']").val();
 			var summary = $('textarea#summary').val();

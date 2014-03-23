@@ -56,11 +56,14 @@ public class ShortstoryAPI {
 			return new Result (Result.STATUS_KO, "accountNull");
 		}
 		textDto = Verify.verifyPutStory(textDto);
-		boolean b = TextDao.saveOrUpdate(textDto, account.id);
-		if(b){
-			return Result.OK;
+		if(textDto != null){
+			boolean b = TextDao.saveOrUpdate(textDto, account.id);
+			if(b){
+				return Result.OK;
+			}
+			return Result.KO;
 		}
-		return Result.KO;
+		return new Result (Result.STATUS_KO, "badParameters");
 	}
 	
 	@POST
