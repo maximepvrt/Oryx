@@ -39,7 +39,8 @@
 						
 			Readily.Connection.publish(title, categ, "", summary, content, function(res) {
 				console.log("publish res", res);
-				Readily.Navigation.go("/home");
+				$(domId).find(".form-body").hide();
+				$(domId).find(".postPublish").removeClass("hidden");
 			})
 			
 			return false;
