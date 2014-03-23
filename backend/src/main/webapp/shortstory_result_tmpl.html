@@ -1,10 +1,9 @@
  {{#each list}}
 <div class="jumbotron">
 	<div>
-		<a href="#shortstory_single/{{id}}">{{title}}</a>
+		<h2><a href="#shortstory_single/{{id}}">{{title}}</a></h2>
+		temps de lecture estimé: {{timeToRead}} minutes
 	</div>
-	<p>{{summary}}
-	<p>temps de lecture estimé: {{timeToRead}} minutes</p>
-	</p>
+	<p>{{summary}}</p>
 </div>
 {{/each}}
