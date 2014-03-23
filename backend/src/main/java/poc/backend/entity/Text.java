@@ -26,7 +26,7 @@ public class Text {
 	public String mood;
 	public String content;
 	
-	public String accountId;
+	public String login;
 	public Integer timeToRead;
 
 }

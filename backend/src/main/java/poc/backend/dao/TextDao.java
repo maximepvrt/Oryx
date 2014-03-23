@@ -16,7 +16,7 @@ public class TextDao {
 		}
 	};
 	
-	public static boolean saveOrUpdate(TextDto textDto, String account) {
+	public static boolean saveOrUpdate(TextDto textDto, String login) {
 		Text text = new Text();
 //		if (text.id == null) {
 //			text.creationDate = new Date();
@@ -29,9 +29,8 @@ public class TextDao {
 		text.type = textDto.type;
 		text.mood = textDto.mood;
 		text.content = textDto.content;
-		text.accountId = account;
-		text.timeToRead = ((textDto.content.split(" ").length) / 300);
-		System.out.println(text.timeToRead);
+		text.login = login;
+		text.timeToRead = Math.max(((textDto.content.split(" ").length) / 200),1);;
 		return delegate.saveOrUpdate(text);
 	}
 
