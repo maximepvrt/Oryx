@@ -84,8 +84,6 @@ public class ShortstoryAPI {
 		List<Text> textList = TextDao.search(min,max, type, category,0,5);
 		System.out.println("mouhahaha:"+textList);
 		if(textList != null && !textList.isEmpty()){
-			System.out.println("gfdfgdsfgd"+textList.isEmpty());
-			System.out.println("test");
 			List<SmallText> smallTextList = new ArrayList<SmallText>();
 			for(Text text : textList){
 				System.out.println(text.category+" "+text.id);
