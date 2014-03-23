@@ -91,6 +91,10 @@ public class ShortstoryAPI {
 		System.out.println("timeToRead:"+timeToRead);
 		System.out.println("category:"+query.category);
 		System.out.println("type:"+query.type);
+		if ("Toutes".equalsIgnoreCase(query.category)) {
+			query.category = null;
+		}
+		
 		List<Text> textList = TextDao.search(min,max, query.type, query.category,0,5);
 		System.out.println("mouhahaha:"+textList);
 		if(textList != null && !textList.isEmpty()){
