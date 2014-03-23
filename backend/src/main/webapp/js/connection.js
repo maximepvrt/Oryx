@@ -4,6 +4,7 @@ window.Readily = window.Readily || {};
 	
 	var base = "/webapi";
 	
+	
 	function Callback(status, data) {
 		this.status = status;
 		this.data = data;
