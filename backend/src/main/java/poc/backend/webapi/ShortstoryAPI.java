@@ -69,7 +69,7 @@ public class ShortstoryAPI {
 	@POST
 	@Path("findlist")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result account (@QueryParam("timetoRead") String timeToReadString,  @QueryParam("type") String type, @QueryParam(value = "category") String category) {
+	public Result findlist (@QueryParam("timetoRead") String timeToReadString,  @QueryParam("type") String type, @QueryParam(value = "category") String category) {
 		Integer timeToRead = null;
 		if(timeToReadString != null){
 			timeToRead = Integer.parseInt(timeToReadString);
