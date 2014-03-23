@@ -85,12 +85,16 @@ public class ShortstoryAPI {
 			timeToRead = Integer.parseInt(query.timeToRead);
 		}
 		Integer min = 0;
-		if(timeToRead != null){min = timeToRead/2;}
+		// if(timeToRead != null){min = timeToRead/2;}
 		Integer max = 9999;
 		if(timeToRead != null){max = timeToRead+timeToRead/2;}
 		System.out.println("timeToRead:"+timeToRead);
 		System.out.println("category:"+query.category);
 		System.out.println("type:"+query.type);
+		if ("Toutes".equalsIgnoreCase(query.category)) {
+			query.category = null;
+		}
+		
 		List<Text> textList = TextDao.search(min,max, query.type, query.category,0,5);
 		System.out.println("mouhahaha:"+textList);
 		if(textList != null && !textList.isEmpty()){
