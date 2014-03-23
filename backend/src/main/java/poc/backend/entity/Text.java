@@ -27,6 +27,6 @@ public class Text {
 	public String content;
 	
 	public String accountId;
-	public String timeToRead;
+	public Integer timeToRead;
 
 }
