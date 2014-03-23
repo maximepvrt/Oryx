@@ -2,14 +2,26 @@ window.Readily = window.Readily || {};
 
 (function(Readily){
 
+	Handlebars.registerHelper('list', function(items, options) {
+		  var out = "<ul>";
+
+		  for(var i=0, l=items.length; i<l; i++) {
+		    out = out + "<li>" + options.fn(items[i]) + "</li>";
+		  }
+
+		  return out + "</ul>";
+		});
+	
+	
 	function installHashOnLinks($el) {
 		$el.find("a").each(function(i) {
 			var self = $(this);
 			var nav = self.attr("href");
 			if (nav && nav.substr(0,1) == '#') {
 				nav = nav.substr(1);
-			}
-			if (nav) {
+			} 
+			var external = self.attr("external");
+			if (nav && !external) {
 				self.click(function(event) {
 					event.preventDefault();
 					hasher.setHash(nav);
@@ -39,6 +51,9 @@ window.Readily = window.Readily || {};
 	
 	function mkRoute(route, domId, externalTemplate, callback) {
 		crossroads.addRoute(route, function() {
+			
+			var args = Array.prototype.slice.apply(arguments);
+			
 			$(currentDomId).hide();
 			$(currentDomId).addClass('hidden');
 			
@@ -46,7 +61,7 @@ window.Readily = window.Readily || {};
 			console.log("route: ", route, domId);
 			if (externalTemplate) {
 				loadExternalTemplate(externalTemplate, function(template) {
-					callback(domId, template);
+					callback(domId, template, args);
 					installHashOnLinks($(domId));
 					$(domId).show();
 					$(domId).removeClass("hidden");
@@ -80,6 +95,9 @@ window.Readily = window.Readily || {};
 		},
 		mkRoute: function(route, domId, template, callback) {
 			mkRoute(route,domId,template,callback);
+		},
+		loadTemplate: function(file, callback) {
+			return loadExternalTemplate(file, callback)
 		}
 	};
 	

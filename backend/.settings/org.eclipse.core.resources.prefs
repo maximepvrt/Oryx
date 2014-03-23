@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/shortstory_multiple_tmpl.html=UTF-8
 encoding//src/main/webapp/shortstory_new_tmpl.html=UTF-8
+encoding//src/main/webapp/shortstory_result_tmpl.html=UTF-8
 encoding//src/main/webapp/shortstory_search_tmpl.html=UTF-8
 encoding/<project>=UTF-8

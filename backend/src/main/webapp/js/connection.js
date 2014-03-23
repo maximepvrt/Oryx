@@ -11,19 +11,20 @@ window.Readily = window.Readily || {};
 	
 	function httpCall(verb, url, param, callback) {
 		var params = {
-				dataType: "application/json",
+				dataType: "json",
 				type: verb,
 	            url: base + url,
 	            data: param,
 	            contentType: "application/json",
 	            success: function(data) {
 	            	if (data.status == "OK")
-	            		callback(new Callback("OK",data));
+	            		callback(new Callback("OK",data.message));
 					else
 						callback(new Callback("KO",data));
 	            },
-	            error: function(data) {
-	            	 callback = new Callback("KO",data);
+	            error: function(jqXHR, status, error) {
+	            	console.log("Error:", status, error);
+	            	 callback(new Callback("KO",status));
 	            }				
 		};
 		$.ajax(params);
@@ -50,7 +51,7 @@ window.Readily = window.Readily || {};
 			httpCall("GET", "/shortstory/findtext", {id:id}, callback);
 		};
 		
-		this.findlist = function(id, callback) {
+		this.findlist = function(timetoRead, categ, callback) {
 			var data = {timetoRead:timetoRead, category:categ};
 			httpCall("POST", "/shortstory/findlist", JSON.stringify(data), callback);
 		};
