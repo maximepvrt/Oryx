@@ -10,6 +10,12 @@
 			
 			Readily.Connection.login(login, pwd, function(res) {
 				console.log("response:", res);
+				
+				if (Readily.Navigation.postLogin) {
+					var target = Readily.Navigation.postLogin;
+					Readily.Navigation.postLogin = undefined;
+					Readily.Navigation.go(target);
+				}
 			});				
 			
 			return false;

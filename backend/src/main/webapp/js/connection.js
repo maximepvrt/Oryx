@@ -2,7 +2,7 @@ window.Readily = window.Readily || {};
 
 (function(Readily){
 	
-	var base = "http://localhost:8080/backend/webapi";
+	var base = "/backend/webapi";
 	
 	function Callback(status, data) {
 		this.status = status;
