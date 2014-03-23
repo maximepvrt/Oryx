@@ -38,14 +38,14 @@ public class TextDao {
 	public static List<Text> search(long timeToReadMin, long timeToReadMax, String type, String category, int offset, int count) {
 
 		GenericDAO.Configuration config = new GenericDAO.Configuration().setSkip(offset).setLimit(count).setSortQuery("{creationDate: -1}");
-        String query = "{timeToRead:{$gt:#},timeToRead:{$lt:#}";
+        String query = "{timeToRead:{$gte:#},timeToRead:{$lte:#}";
         List<Object> arguments = new ArrayList<>();
         arguments.add(timeToReadMin);
         arguments.add(timeToReadMax);
         
         if (category != null) {
-        	query += ", {category: #}";
-            arguments.add(timeToReadMax);
+        	query += ", category: #";
+            arguments.add(category);
         }
         
         query += "}";

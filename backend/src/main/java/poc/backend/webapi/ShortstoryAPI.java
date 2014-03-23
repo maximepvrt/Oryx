@@ -83,7 +83,7 @@ public class ShortstoryAPI {
 			timeToRead = Integer.parseInt(query.timeToRead);
 		}
 		Integer min = 0;
-		if(timeToRead != null){min = timeToRead/2;}
+		// if(timeToRead != null){min = timeToRead/2;}
 		Integer max = 9999;
 		if(timeToRead != null){max = timeToRead+timeToRead/2;}
 		System.out.println("timeToRead:"+timeToRead);
