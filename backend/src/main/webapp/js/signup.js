@@ -45,7 +45,7 @@
 						Readily.Navigation.postLogin = undefined;
 						Readily.Navigation.go(target);
 					} else {
-						Readily.Navigation.go("#login");						
+						Readily.Navigation.go("#home");						
 					}
 				} else {
 					setError("Votre nom d'utilisateur est déjà pris. Merci d'en choisir un autre.")
