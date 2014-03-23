@@ -56,8 +56,12 @@ public class ShortstoryAPI {
 		if(account == null){
 			return new Result (Result.STATUS_OK, "accountNull");
 		}
-		response.addCookie(new Cookie("id", account.id));
-		response.addCookie(new Cookie("login", account.login));
+		Cookie cookie1 = new Cookie("id", account.id);
+		cookie1.setMaxAge(30000000);
+		response.addCookie(cookie1);
+		Cookie cookie2 = new Cookie("login", account.login);
+		cookie1.setMaxAge(30000000);
+		response.addCookie(cookie2);
 		boolean b = TextDao.saveOrUpdate(textDto, account.id);
 		if(b){
 			return Result.OK;
