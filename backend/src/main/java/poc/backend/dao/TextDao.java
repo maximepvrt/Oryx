@@ -30,7 +30,7 @@ public class TextDao {
 		text.mood = textDto.mood;
 		text.content = text.content;
 		text.accountId = account;
-		text.timeToRead = textDto.timeToRead;
+		text.timeToRead = 0L;
 		return delegate.saveOrUpdate(text);
 	}
 
